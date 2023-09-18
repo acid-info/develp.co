@@ -46,19 +46,7 @@ const config = {
       }),
     ],
   ],
-  plugins: [
-    [
-      '@docusaurus/plugin-client-redirects',
-      {
-        redirects: [{ from: '/research', to: '/rlog' }],
-        createRedirects(existingPath) {
-          return existingPath.startsWith('/rlog') && existingPath !== '/rlog'
-            ? [existingPath.replace('/rlog', '')]
-            : undefined
-        },
-      },
-    ],
-  ],
+  plugins: [],
 
   themeConfig:
     /** @type {import('@acid-info/logos-docusaurus-preset').ThemeConfig} */
