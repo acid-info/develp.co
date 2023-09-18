@@ -71,9 +71,8 @@ $ yarn serve
 
 ## CI/CD
 
-- The `master` branch is automatically deployed to the production server (e.g., logos.co) through [CI](https://ci.infra.status.im)
-- The `develop` branch is automatically deployed to the staging server (e.g., dev.logos.co) through [CI](https://ci.infra.status.im)
-
+- The `master` branch is deployed to https://develp.co/ through [Jenkins CI](https://ci.infra.status.im/job/website/job/develp.co/).
+- The `develop` branch is deployed to https://dev.develp.co/ through [Jenkins CI](https://ci.infra.status.im/job/website/job/dev.develp.co/).
 
 ## Change Process
 
