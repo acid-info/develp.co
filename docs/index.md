@@ -3,13 +3,7 @@ title: About
 hide_table_of_contents: true
 ---
 
-<head>
-  <title>About</title>
-</head>
-
 # Develp
-
-## Description
 
 Develp GmbH (Develp) provides core infrastructure and operations services to support staking protocols on Ethereum. 
 
