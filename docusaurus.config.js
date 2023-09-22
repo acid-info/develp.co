@@ -28,7 +28,7 @@ const config = {
       '@acid-info/logos-docusaurus-preset',
       /** @type {import('@acid-info/logos-docusaurus-preset').PluginOptions} */
       ({
-        businessUnit: 'Logos',
+        businessUnit: 'Nimbus',
         theme: {
           name: 'default',
           options: {
@@ -52,6 +52,11 @@ const config = {
     /** @type {import('@acid-info/logos-docusaurus-preset').ThemeConfig} */
     ({
       navbar: {
+        logo: {
+          alt: 'Develp',
+          src: 'img/logo.svg',
+          srcDark: 'img/logo.svg',
+        },
         items: [
           {
             type: 'search',

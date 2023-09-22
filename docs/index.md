@@ -2,6 +2,10 @@
 title: About
 ---
 
+<head>
+  <title>About</title>
+</head>
+
 # Develp
 
 ## Description
