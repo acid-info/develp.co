@@ -60,11 +60,7 @@ const config = {
           src: 'img/logo.svg',
           srcDark: 'img/logo.svg',
         },
-        items: [
-          {
-            type: 'search',
-          },
-        ],
+        items: [],
       },
       footer: {
         copyright: `Develp @${thisYear}<br/>All Rights Reserved.`,
