@@ -5,6 +5,8 @@ require('dotenv').config()
 const math = require('remark-math')
 const katex = require('rehype-katex')
 
+const thisYear = new Date().getFullYear()
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Develp',
@@ -62,39 +64,24 @@ const config = {
           {
             type: 'search',
           },
-          {
-            label: 'About',
-            to: '/',
-          },
         ],
       },
       footer: {
+        copyright: `Develp @${thisYear}<br/>All Rights Reserved.`,
         links: [
           {
             items: [
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/vacp2p',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discord.gg/PQFdubGt6d',
-              },
-              {
-                label: 'Github',
-                href: 'https://github.com/vacp2p',
+                href: 'https://twitter.com/develpgmbh',
               },
             ],
           },
           {
             items: [
               {
-                label: 'Work With Us',
-                href: 'https://jobs.status.im/',
-              },
-              {
-                label: 'Terms & Conditions',
-                to: '/terms',
+                label: 'Contact us',
+                href: '/contact-us',
               },
             ],
           },

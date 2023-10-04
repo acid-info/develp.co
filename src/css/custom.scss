@@ -13,5 +13,14 @@ html {
 }
 
 .footer {
-  display: none;
+  > div:first-child {
+    margin-bottom: unset !important;
+  }
+  > div:nth-child(2) {
+    display: none;
+  }
+
+  > button {
+    display: none;
+  }
 }
