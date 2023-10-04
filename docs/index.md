@@ -11,6 +11,8 @@ pagination_next: null
 
 Develp GmbH supports Ethereum staking protocols with core infrastructure and operational services. We strive to provide high-quality, reliable services to partnering protocols operating Ethereum nodes.
 
+<br/>
+
 ### Key focuses
 
 #### Network decentralisation
