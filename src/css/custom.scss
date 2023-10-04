@@ -22,11 +22,11 @@ html {
     margin-bottom: unset !important;
   }
   > div:nth-child(2) {
-    display: none;
+    display: none !important;
   }
 
   > button {
-    display: none;
+    display: none !important;
   }
 }
 
