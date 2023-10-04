@@ -33,3 +33,7 @@ html {
 main {
   min-height: 100% !important;
 }
+
+.main-wrapper main > .container {
+  padding-bottom: 0 !important;
+}
