@@ -7,7 +7,7 @@ pagination_next: null
 
 # Develp Strengthens Ethereum by Encouraging Client Diversity
 
-## We are committed to increasing network decentralisation and supporting minority client development and adoption
+### We are committed to increasing network decentralisation and supporting minority client development and adoption
 
 Develp GmbH supports Ethereum staking protocols with core infrastructure and operational services. We strive to provide high-quality, reliable services to partnering protocols operating Ethereum nodes.
 
