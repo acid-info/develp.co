@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+pagination_prev: null
 ---
 
 # Contact us

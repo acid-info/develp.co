@@ -12,6 +12,11 @@ html {
   }
 }
 
+.hidden {
+  display: none !important;
+}
+
+
 .footer {
   > div:first-child {
     margin-bottom: unset !important;
@@ -23,4 +28,8 @@ html {
   > button {
     display: none;
   }
+}
+
+main {
+  min-height: 100% !important;
 }

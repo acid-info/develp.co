@@ -68,7 +68,6 @@ The static files will be created in the `build` directory.
 $ yarn serve
 ```
 
-
 ## CI/CD
 
 - The `master` branch is deployed to https://develp.co/ through [Jenkins CI](https://ci.infra.status.im/job/website/job/develp.co/).

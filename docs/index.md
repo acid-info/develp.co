@@ -2,6 +2,7 @@
 title: About
 hide_table_of_contents: true
 sidebar_position: 1
+pagination_next: null
 ---
 
 # Develp Strengthens Ethereum by Encouraging Client Diversity
