@@ -83,6 +83,14 @@ const config = {
                 label: 'Contact us',
                 href: '/contact-us',
               },
+              {
+                href: '/terms',
+                label: 'Terms & conditions',
+              },
+              {
+                href: '/privacy-policy',
+                label: 'Privacy Policy',
+              },
             ],
           },
         ],
