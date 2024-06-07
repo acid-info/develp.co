@@ -1,15 +1,15 @@
 {
-    "timestamp": "2024-06-07T13:27:50Z",
+    "timestamp": "2024-06-07T13:34:23Z",
     "git": {
-        "commit": "6461db26d31a833130e0bd40810d2698b52e0e42",
+        "commit": "16ede19772b68440305867de2122e666d4879751",
         "branch": "origin/deploy-via-caddy",
         "url": "git@github.com:acid-info/develp.co.git"
     },
     "build": {
-        "id": "18",
-        "number": "18",
+        "id": "19",
+        "number": "19",
         "name": "website/develp.co",
         "slave": "linux-02",
-        "url": "https://ci.infra.status.im/job/website/job/develp.co/18/"
+        "url": "https://ci.infra.status.im/job/website/job/develp.co/19/"
     }
 }
