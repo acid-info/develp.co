@@ -2,7 +2,15 @@
 library 'status-jenkins-lib@v1.8.16'
 
 pipeline {
-  agent { label 'linux' }
+  agent {
+    docker {
+      label 'linuxcontainer'
+      image 'harbor.status.im/infra/ci-build-containers:linux-base-1.0.0'
+      args '--volume=/nix:/nix ' +
+           '--volume=/etc/nix:/etc/nix ' +
+           '--user jenkins'
+    }
+  }
 
   options {
     disableConcurrentBuilds()
@@ -21,14 +29,16 @@ pipeline {
   stages {
     stage('Install') {
       steps {
-        sh 'yarn install'
+        script {
+          nix.develop('yarn install', pure: false)
+        }
       }
     }
 
     stage('Build') {
       steps {
         script {
-          sh 'yarn build'
+          nix.develop('yarn build', pure: false)
           jenkins.genBuildMetaJSON('build/build.json')
         }
       }
@@ -37,13 +47,15 @@ pipeline {
     stage('Publish') {
       steps {
         sshagent(credentials: ['status-im-auto-ssh']) {
-          sh """
-            ghp-import \
-              -b ${deployBranch()} \
-              -c ${deployDomain()} \
-              -p build
-          """
-         }
+          script {
+            nix.develop("""
+              ghp-import \
+                -b ${deployBranch()} \
+                -c ${deployDomain()} \
+                -p build
+            """, pure: false)
+          }
+        }
       }
     }
   }
