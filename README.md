@@ -25,7 +25,11 @@ $ yarn start
 
 ## Landing Page
 
-The landing page is `docs/index.md`, served at `/` by the docs plugin (see `docusaurus.config.js` `routeBasePath`). It uses the Markdown format and can utilize React components from the [Logos Docusaurus Plugins](https://github.com/acid-info/logos-docusaurus-plugins/tree/main/packages/logos-docusaurus-theme/src/client/components/mdx) package.
+The landing page is `docs/index.md`, served at `/` by the docs plugin (see `docusaurus.config.js` `routeBasePath`). The Markdown file renders a single custom React component, [`src/components/IndexPage.tsx`](src/components/IndexPage.tsx), which contains the whole landing layout.
+
+Styling is a mix of [Tailwind CSS](https://tailwindcss.com) utilities (see `tailwind.config.js`, `src/css/tailwind.css`) and global overrides in `src/css/custom.scss`. The landing page is full-bleed (sidebar/TOC hidden) purely via CSS `:has(.index-page)` selectors in `custom.scss`.
+
+To tweak landing content (copy, metrics, sections), edit `IndexPage.tsx`. To change global look (colors, fonts), edit `tailwind.config.js` and `src/css/custom.scss`.
 
 
 ## Adding Subpages
@@ -37,7 +41,7 @@ To hide a page from the sidebar, set `displayed_sidebar: null` and `sidebar_clas
 
 ## Root Pages
 
-Subpages that do not belong in the sidebar (e.g., [Terms of Use](/docs/terms.md)) are located in the `docs` directory and hidden from navigation via frontmatter.
+Subpages that do not belong in the sidebar (e.g., [Terms of Use](/terms)) are located in the `docs` directory and hidden from navigation via frontmatter.
 
 
 ## Docusaurus Config
@@ -81,5 +85,5 @@ Information about deployed build can be also found in `/build.json` available on
 
 1. Create a new working branch from `develop`: `git checkout develop; git checkout -b my-changes`.
 2. Make your changes, push them to the `origin`, and open a Pull Request against the `develop` branch.
-3. After approval, merge the pull request, and verify the changes on the staging server (e.g., https://dev.vac.dev).
+3. After approval, merge the pull request, and verify the changes on the staging server (e.g., https://dev.develp.co).
 4. When ready to promote changes to the live website, rebase the `master` branch on the staging changes: `git checkout master; git pull origin master; git rebase origin/develop; git push`.

@@ -9,17 +9,23 @@ const config = {
   url: 'https://develp.co/',
   baseUrl: '/',
 
-  markdown: {
-    mermaid: true,
-  },
-
-  // Even if you don't use internalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
   },
+
+  scripts: [
+    {
+      src: 'https://analytic.keycard.tech/script.js',
+      defer: true,
+      'data-website-id': '91e01424-76e6-494b-9099-1d80384c1150',
+    },
+  ],
+
+  stylesheets: [
+    'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&display=swap',
+    'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap',
+  ],
 
   presets: [
     [
@@ -31,20 +37,32 @@ const config = {
         theme: {
           name: 'default',
           options: {
-            customCss: [require.resolve('./src/css/custom.scss')],
+            customCss: [
+              require.resolve('./src/css/tailwind.css'),
+              require.resolve('./src/css/custom.scss'),
+            ],
           },
         },
         docs: {
           id: 'Docs',
           routeBasePath: '/',
-          // sidebarPath: 'docs/sidebars.js',
         },
         og: {},
       }),
     ],
   ],
-  plugins: [],
-
+  plugins: [
+    function tailwindPlugin() {
+      return {
+        name: 'docusaurus-tailwindcss',
+        configurePostCss(opts) {
+          opts.plugins.push(require('tailwindcss'))
+          opts.plugins.push(require('autoprefixer'))
+          return opts
+        },
+      }
+    },
+  ],
   themeConfig:
     /** @type {import('@docusaurus/theme-common').UserThemeConfig} */
     ({
@@ -61,16 +79,24 @@ const config = {
         { name: 'image', content: 'img/logo.svg' },
       ],
       colorMode: {
-        disableSwitch: false,
-        respectPrefersColorScheme: true,
+        defaultMode: 'dark',
+        disableSwitch: true,
+        respectPrefersColorScheme: false,
       },
       navbar: {
+        title: 'Develp',
         logo: {
           alt: 'Develp',
           src: 'img/logo.svg',
           srcDark: 'img/logo.svg',
         },
-        items: [],
+        items: [
+          { label: 'Commitment', to: '/#commitment', position: 'right' },
+          { label: 'Key Focus', to: '/#focus', position: 'right' },
+          { label: 'Results', to: '/#results', position: 'right' },
+          { label: 'Solutions', to: '/#solutions', position: 'right' },
+          { label: 'Contact', to: '/#contact', position: 'right' },
+        ],
       },
       footer: {
         copyright: `Develp @${thisYear}<br/>All Rights Reserved.`,
@@ -96,6 +122,10 @@ const config = {
               {
                 href: '/privacy-policy',
                 label: 'Privacy Policy',
+              },
+              {
+                href: '/security',
+                label: 'Security',
               },
             ],
           },

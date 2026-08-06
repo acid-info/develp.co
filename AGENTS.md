@@ -18,7 +18,7 @@ Context file for AI agents and developers working on the **develp.co** website r
 | Preset/theme | `@acid-info/logos-docusaurus-preset` | **1.0.3** (exact; hard-pins `@docusaurus/core` 3.8.1, pre-1.0 package — API churn risk) |
 | UI | React / React-DOM | **^19.0.8** (theme peer-requires React 19; do not downgrade) |
 | Markdown | MDX | **3.x** (`@mdx-js/react` ^3.1.1) |
-| Styling | Sass | `sass` ^1.62.1 via injected `docusaurus-plugin-sass` |
+| Styling | Sass + Tailwind | `sass` ^1.62.1 via injected `docusaurus-plugin-sass`; `tailwindcss` 3.4.17 + `autoprefixer` via a custom PostCSS plugin (see `docusaurus.config.js` `plugins`) |
 | Code highlight | prism-react-renderer | ^2.1.0 |
 | Language | TypeScript | ~5.2.2 — type-check only (`tsc`, noEmit) |
 | Package manager | Yarn (classic) | 1.22 (`yarn.lock` committed; CI runs plain `yarn install`) |
@@ -47,17 +47,22 @@ yarn docusaurus <cmd>
 │   ├── terms.md           # → "/terms"               (hidden from sidebar)
 │   └── privacy-policy.md  # → "/privacy-policy"      (hidden from sidebar)
 ├── src/
-│   ├── components/mdx/index.tsx  # re-exports Logos MDX components (rarely touched)
-│   └── css/custom.scss           # global style overrides
+│   ├── components/IndexPage.tsx      # the landing page React component (rendered by docs/index.md)
+│   └── css/
+│       ├── custom.scss               # global style overrides + landing-page layout rules
+│       └── tailwind.css              # Tailwind entry (@tailwind base/components/utilities)
 ├── static/
-│   └── img/logo.svg              # navbar/footer logo
+│   └── img/
+│       ├── logo.svg                  # navbar/footer logo
+│       └── hero-wireframe.png        # landing hero background image
 ├── docusaurus.config.js    # site config (see "Config Gotchas")
+├── tailwind.config.js      # Tailwind theme (Material-3 palette, Space Grotesk, font-label helpers)
 ├── package.json / yarn.lock
 ├── tsconfig.json           # extends @docusaurus/tsconfig
 ├── babel.config.js         # stock Docusaurus Babel preset — leave alone
 ├── flake.nix               # Nix dev shell (git, openssh, yarn 1.22, nodejs_20, ghp-import)
 ├── Jenkinsfile             # CI/CD pipeline
-├── .husky/                 # pre-commit → `yarn typecheck`; commit-msg is empty
+├── .husky/                 # pre-commit → `yarn typecheck`
 └── .github/                # issue + PR templates
 ```
 
@@ -74,9 +79,10 @@ yarn docusaurus <cmd>
   pagination_prev: null
   pagination_next: null
   ```
+- **Landing page mechanism:** `docs/index.md` imports `<IndexPage />` from `src/components/IndexPage.tsx`. The landing page is made full-bleed (no sidebar/TOC, full-width sections) **purely with CSS**: `.container:has(.index-page)`, `.row:has(.index-page)`, and `article:has(.index-page) …` selectors in `src/css/custom.scss`. There is no JS/body-class toggling — keep it that way (`:has()` is fully supported). Navbar anchor links (`/#commitment`, `/#focus`, …) scroll via the `ScrollToHash` component inside `IndexPage.tsx` (required because the theme's default hash scroll does not fire for same-page anchor clicks). Tailwind utilities come from `tailwind.config.js` (`@tailwind base` is loaded but `corePlugins.preflight` is **disabled** so Docusaurus theme styles are not reset).
 - **Logos preset merge behavior:** with `businessUnit: 'Nimbus'` + `customSiteConfig: true`, the preset injects Nimbus-themed defaults (shared ecosystem footer links, `<meta>` tags). The **local `docusaurus.config.js` overrides overlapping keys** — but anything you don't define locally falls back to Nimbus defaults. If the `themeConfig.metadata` block is removed, the Nimbus meta (`description: "Nimbus, a Lighter Ethereum Client"`, `keywords: nimbus`) will reappear on the site.
 - **Active plugins (auto-injected by the preset):** content-docs, content-pages, sass, theme-mermaid, local search (`logos-docusaurus-search-local`), `@acid-info/docusaurus-og` (build-time OG images into `_og/`), plus sitemap via preset-classic.
-- **Mermaid** is enabled (`markdown.mermaid: true`) but no diagrams exist yet; **KaTeX/math support was removed** during the v3 upgrade.
+- **Mermaid** is disabled (no `markdown.mermaid` config, no diagrams exist); the `theme-mermaid` plugin is still auto-injected by the preset. **KaTeX/math support was removed** during the v3 upgrade.
 
 ## Config Gotchas (docusaurus.config.js)
 
@@ -104,7 +110,7 @@ yarn docusaurus <cmd>
 - **Do not add comments unless asked.**
 - Prettier config in `.prettierrc` (tabWidth 2, no semicolons, single quotes, trailing commas). `.prettierignore` covers `*.md`/`*.mdx`.
 - **No lint script** — only `yarn typecheck` (enforced in `.husky/pre-commit`).
-- Minimal `src/`: only `custom.scss` and an MDX re-export barrel. Avoid swizzling theme components; prefer preset config options.
+- `src/` holds only the landing component and CSS (see Project Structure). Avoid swizzling theme components; prefer preset config options.
 
 ## CI/CD & Deployment
 
