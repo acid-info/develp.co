@@ -7,8 +7,8 @@ pagination_next: null
 
 # Security
 
-We take security seriously at Develp and across the <a href="https://free.technology/" target="_blank">Institute of Free Technology</a> and its affiliates.
+We take security seriously at Develp and across the [Institute of Free Technology](https://free.technology/) and its affiliates.
 
-Please report any security incidents via <a href="mailto:security@free.technology">security@free.technology</a>.
+Please report any security incidents via [security@free.technology](mailto:security@free.technology).
 
-Please report any discovered vulnerabilities in our bounty programme at <a href="https://hackenproof.com/ift" target="_blank">HackenProof</a> to help ensure our protocols and software remain secure.
+Please report any discovered vulnerabilities in our bounty programme at [HackenProof](https://hackenproof.com/ift) to help ensure our protocols and software remain secure.
