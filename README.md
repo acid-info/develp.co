@@ -25,19 +25,19 @@ $ yarn start
 
 ## Landing Page
 
-The code for a landing page is located in `src/pages/index.mdx`. This file employs the `mdx` format and utilizes React components from the [Logos Docusaurus Plugins](https://github.com/acid-info/logos-docusaurus-plugins/tree/main/packages/logos-docusaurus-theme/src/client/components/mdx) package.
+The landing page is `docs/index.md`, served at `/` by the docs plugin (see `docusaurus.config.js` `routeBasePath`). It uses the Markdown format and can utilize React components from the [Logos Docusaurus Plugins](https://github.com/acid-info/logos-docusaurus-plugins/tree/main/packages/logos-docusaurus-theme/src/client/components/mdx) package.
 
 
 ## Adding Subpages
 
-To include subpages, create a `.md` or `mdx` file within the `about` directory. You can use [Frontmatter](https://docusaurus.io/docs/markdown-features#front-matter) to add metadata to your markdown file.
+To add a subpage, create a `.md` or `.mdx` file in the `docs` directory. You can use [Frontmatter](https://docusaurus.io/docs/markdown-features#front-matter) to add metadata to your markdown file.
 
-The content in `about/index.md` will be utilized as the index page for the `/about` section.
+To hide a page from the sidebar, set `displayed_sidebar: null` and `sidebar_class_name: hidden` in its frontmatter (as done for the legal pages).
 
 
 ## Root Pages
 
-Subpages that do not belong to the `About` page (e.g., [Terms of Use](/root-pages/terms.md)) can be situated in the `root-pages` directory.
+Subpages that do not belong in the sidebar (e.g., [Terms of Use](/docs/terms.md)) are located in the `docs` directory and hidden from navigation via frontmatter.
 
 
 ## Docusaurus Config

@@ -1,9 +1,5 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
-require('dotenv').config()
-
-const math = require('remark-math')
-const katex = require('rehype-katex')
 
 const thisYear = new Date().getFullYear()
 
@@ -42,8 +38,6 @@ const config = {
           id: 'Docs',
           routeBasePath: '/',
           // sidebarPath: 'docs/sidebars.js',
-          remarkPlugins: [math],
-          rehypePlugins: [katex],
         },
         og: {},
       }),
@@ -52,8 +46,20 @@ const config = {
   plugins: [],
 
   themeConfig:
-    /** @type {import('@acid-info/logos-docusaurus-preset').ThemeConfig} */
+    /** @type {import('@docusaurus/theme-common').UserThemeConfig} */
     ({
+      metadata: [
+        {
+          name: 'description',
+          content:
+            'Develp GmbH supports Ethereum staking protocols with core infrastructure and operational services, championing client diversity and network decentralisation.',
+        },
+        {
+          name: 'keywords',
+          content: 'develp, ethereum, staking, nimbus, client diversity',
+        },
+        { name: 'image', content: 'img/logo.svg' },
+      ],
       colorMode: {
         disableSwitch: false,
         respectPrefersColorScheme: true,
@@ -96,16 +102,6 @@ const config = {
         ],
       },
     }),
-
-  stylesheets: [
-    {
-      href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
-      type: 'text/css',
-      integrity:
-        'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
-      crossorigin: 'anonymous',
-    },
-  ],
 }
 
 module.exports = config
