@@ -1,15 +1,15 @@
 {
-    "timestamp": "2026-10-05T15:15:14Z",
+    "timestamp": "2026-10-05T15:46:27Z",
     "git": {
-        "commit": "203dc42b12c03d327eab3e524ed980d8cf6e5fc0",
-        "branch": "origin/rework-website",
+        "commit": "6b193d55a3130cdbc2b0929cff7e9ce8eedffc9d",
+        "branch": "origin/develop",
         "url": "git@github.com:acid-info/develp.co.git"
     },
     "build": {
-        "id": "31",
-        "number": "31",
+        "id": "34",
+        "number": "34",
         "name": "website/dev.develp.co",
         "slave": "linux-02",
-        "url": "https://ci.infra.status.im/job/website/job/dev.develp.co/31/"
+        "url": "https://ci.infra.status.im/job/website/job/dev.develp.co/34/"
     }
 }
